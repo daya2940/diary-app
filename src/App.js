@@ -1,9 +1,11 @@
-import './App.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Editor from "./component/editor";
 
 function App() {
   return (
-    <div className="App">
-
+    <div>
+      <Editor />
     </div>
   );
 }
