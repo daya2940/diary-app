@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import moment from "moment";
 
 const Filter = ({date,notes}) => {
  

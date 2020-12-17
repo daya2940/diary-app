@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Item from "./item";
 import moment from "moment";
-import Filter from "./filter";
 
 const Editor = () => {
   const [values, setValue] = useState({
