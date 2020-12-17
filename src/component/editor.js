@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Item from "./item";
 import moment from "moment";
+import Filter from "./filter";
 
 const Editor = () => {
   const [values, setValue] = useState({
     content: "",
     dailyNotes: [],
-    // date: []
+    date: [],
   });
 
   const [show, setShow] = useState({
@@ -14,7 +15,7 @@ const Editor = () => {
     update: false,
   });
   const [position, setPosition] = useState(0);
-  const { content, dailyNotes,date} = values;
+  const { content, dailyNotes, date } = values;
   const { add, update } = show;
 
   const handleChange = (name) => (e) => {
@@ -22,17 +23,11 @@ const Editor = () => {
   };
 
   const addItem = () => {
-    // let weeknumber = moment(date, "MM-DD-YYYY").week();
-    // let check = moment(date, "MM-DD-YYYY");
-    // let month = check.format("M");
-    // let year = check.format("YYYY");
-    // moment().format("MM-DD-YYYY")
-    // var day   = check.format('D');
-    let upadtedList = [...dailyNotes, content ,moment().format("MM-DD-YYYY")];
-    // dailyNotes.push(moment().format("MM-DD-YYYY"));
-    console.log(upadtedList);
+    let timing = moment().format("DD-MM-YYYY");
+    let upadtedList = [...dailyNotes, content];
+    let updatedDate = [...date, timing];
     if (upadtedList.length !== 0 && content !== "") {
-      setValue({ dailyNotes: upadtedList, content: ""});
+      setValue({ dailyNotes: upadtedList, date: updatedDate, content: "" });
     }
   };
 
@@ -88,8 +83,11 @@ const Editor = () => {
             </div>
           </div>
           <div className="col-lg-6">
+            <div className="mt-5 ml-3">
+              <Filter date={date} notes={dailyNotes} />
+            </div>
             {
-              <div className="container mt-3">
+              <div className="container mt-5">
                 <ul
                   className="row"
                   style={{ maxHeight: "800px", overflowY: "scroll" }}
@@ -102,6 +100,7 @@ const Editor = () => {
                         index={index}
                         deleteItem={deleteItem}
                         editItem={editItem}
+                        time={date[index]}
                       />
                     ))}
                 </ul>

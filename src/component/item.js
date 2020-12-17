@@ -2,16 +2,16 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-const Item = ({ index, item, deleteItem, editItem}) => {
+const Item = ({ index, item, deleteItem, editItem, time }) => {
+  console.log(time);
   return (
-    <li key={index} className="card col-7 mt-3">
-      <div className="d-flex justify-content-between">
+    <li key={index} className="card col-sm-12 col-lg-7 col-md-7 mt-5">
+      <div className="row m-3">
         <p className="mt-2">{item}</p>
-        {/* <p>{item.dailyTiming.day}</p>
-        <p>{item.dailyTiming.month}</p>
-        <p>{item.dailyTiming.weekNumber}</p>
-        <p>{item.dailyTiming.year}</p> */}
+        <p>CreatedAt : {time}</p>
+        </div>
         <div>
+        <div className="row m-2">
           <button
             className="btn delete-btn"
             key={Math.random()}
