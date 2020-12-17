@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import moment from "moment";
 
 const Filter = ({date,notes}) => {
-  console.log(notes,date);
+ 
+  // const [filter,setFilter] = useState({
+  //   filterDate :[],
+  //   filteredContent:[],
+  //   showFilter:false
+  // })
 
   const [selected,setSelected] = useState('Filter');
   
@@ -11,17 +16,19 @@ const Filter = ({date,notes}) => {
       let filterValue = prompt('Enter the required value in numbers');
       console.log(filterValue);
       setSelected(event.target.textContent);
-      console.log(selected);
+      // date.map(item => {
+      //   let check = moment(item, "MM-DD-YYYY");
+      //   console.log(item);
+      //   let weeknumber = moment(item, "MM-DD-YYYY").week();
+      //   let month = check.format("M");
+      //   let year = check.format("YYYY");
+      // });
     }
-    
-    date.map((item) => {
-      let check = moment(item, "MM-DD-YYYY");
-      let weeknumber = moment(item, "MM-DD-YYYY").week();
-      let month = check.format("M");
-      let year = check.format("YYYY");
-      console.log(weeknumber);
-    });
   };
+
+
+  
+
 
   return (
     <div>

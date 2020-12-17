@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const Item = ({ index, item, deleteItem, editItem, time }) => {
-  console.log(time);
   return (
     <li key={index} className="card col-sm-12 col-lg-7 col-md-7 mt-5">
       <div className="row m-3">

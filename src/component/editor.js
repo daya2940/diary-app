@@ -84,7 +84,7 @@ const Editor = () => {
           </div>
           <div className="col-lg-6">
             <div className="mt-5 ml-3">
-              <Filter date={date} notes={dailyNotes} />
+              {/* <Filter date={date} notes={dailyNotes} /> */}
             </div>
             {
               <div className="container mt-5">
