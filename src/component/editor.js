@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Item from "./item";
+import moment from "moment";
 
 const Editor = () => {
   const [values, setValue] = useState({
     content: "",
     dailyNotes: [],
+    // date: []
   });
 
   const [show, setShow] = useState({
@@ -12,7 +14,7 @@ const Editor = () => {
     update: false,
   });
   const [position, setPosition] = useState(0);
-  const { content, dailyNotes } = values;
+  const { content, dailyNotes,date} = values;
   const { add, update } = show;
 
   const handleChange = (name) => (e) => {
@@ -20,14 +22,22 @@ const Editor = () => {
   };
 
   const addItem = () => {
-    let upadtedList = [...dailyNotes, content];
+    // let weeknumber = moment(date, "MM-DD-YYYY").week();
+    // let check = moment(date, "MM-DD-YYYY");
+    // let month = check.format("M");
+    // let year = check.format("YYYY");
+    // moment().format("MM-DD-YYYY")
+    // var day   = check.format('D');
+    let upadtedList = [...dailyNotes, content ,moment().format("MM-DD-YYYY")];
+    // dailyNotes.push(moment().format("MM-DD-YYYY"));
+    console.log(upadtedList);
     if (upadtedList.length !== 0 && content !== "") {
-      setValue({ dailyNotes: upadtedList, content: "" });
+      setValue({ dailyNotes: upadtedList, content: ""});
     }
   };
 
   const deleteItem = (index) => {
-    let confirmation = window.confirm("Do you want to delete");
+    let confirmation = window.confirm("Are you sure you want to delete ?");
     if (confirmation) {
       dailyNotes.splice(index, 1);
       setValue({ ...values });
@@ -37,11 +47,10 @@ const Editor = () => {
   const updateItem = () => {
     setShow({ add: true, update: false });
     dailyNotes[position] = content;
-    setValue({...values,content:''});
+    setValue({ ...values, content: "" });
   };
 
   const editItem = (index) => {
-    console.log(index);
     setPosition(index);
     console.log(dailyNotes[index]);
     setValue({ ...values, content: dailyNotes[index] });
